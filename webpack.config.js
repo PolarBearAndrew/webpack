@@ -1,5 +1,4 @@
 var Path = require("path");
-// var webpack = require('webpack');
 
 module.exports = {
 
@@ -17,10 +16,13 @@ module.exports = {
         exclude: [ /node_modules/, /vendor/ ],
         loaders: [ 'babel-loader' ]
       },
-
       {
         test: /\.css$/,
         loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.sass$/,
+        loader: 'style!css!scss'
       }
     ],
 
@@ -29,8 +31,6 @@ module.exports = {
 
   output: {
     path: Path.resolve(__dirname, "./build"),
-
-    // 有 multiple entry point 時，這裏一定要用變數寫法，不然多個產出 js file 會彼此覆寫
     filename: "[name].js",
   },
 
